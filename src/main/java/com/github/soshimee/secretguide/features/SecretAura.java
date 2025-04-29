@@ -260,6 +260,6 @@ public class SecretAura {
 
 	private static void sendPacket(BlockPos position, MovingObjectPosition movingObjectPosition, ItemStack itemStack) {
 		PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), itemStack, (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord));
-		//PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(itemStack));
+		// PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(itemStack));
 	}
 }
