@@ -78,7 +78,7 @@ public class SecretAura {
 						player.inventory.currentItem = SecretGuideConfig.secretAuraSlot - 1;
 						return;
 					}
-					PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), player.getHeldItem(), (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord));
+					sendPacket(position, movingObjectPosition, player.getHeldItem());
 					if (!player.isSneaking() && SecretGuideConfig.secretAuraSwingHand) player.swingItem();
 					blocksCooldown.put(position, new Date().getTime());
 					return;
@@ -102,7 +102,7 @@ public class SecretAura {
 						player.inventory.currentItem = SecretGuideConfig.secretAuraSlot - 1;
 						return;
 					}
-					PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), player.getHeldItem(), (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord));
+					sendPacket(position, movingObjectPosition, player.getHeldItem());
 					if (!player.isSneaking() && SecretGuideConfig.secretAuraSwingHand) player.swingItem();
 					blocksCooldown.put(position, new Date().getTime());
 					return;
@@ -137,7 +137,7 @@ public class SecretAura {
 						player.inventory.currentItem = SecretGuideConfig.secretAuraSlot - 1;
 						return;
 					}
-					PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), player.getHeldItem(), (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord));
+					sendPacket(position, movingObjectPosition, player.getHeldItem());
 					blocksCooldown.put(position, new Date().getTime());
 					return;
 				}
@@ -159,7 +159,7 @@ public class SecretAura {
 						player.inventory.currentItem = SecretGuideConfig.secretAuraSlot - 1;
 						return;
 					}
-					PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), player.getHeldItem(), (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord));
+					sendPacket(position, movingObjectPosition, player.getHeldItem());
 					blocksCooldown.put(position, new Date().getTime());
 					return;
 				}
@@ -256,5 +256,10 @@ public class SecretAura {
 	public static void clearBlocks() {
 		blocksDone.clear();
 		blocksCooldown.clear();
+	}
+
+	private static void sendPacket(BlockPos position, MovingObjectPosition movingObjectPosition, itemStack) {
+		PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), itemStack, (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord));
+		PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(itemStack));
 	}
 }
