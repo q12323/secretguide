@@ -65,6 +65,7 @@ repositories {
 	maven("https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1")
 	maven("https://repo.polyfrost.cc/releases")
 	maven("https://repo.essential.gg/repository/maven-public/")
+        maven("https://repo.essential.gg/repository/maven-releases/")
 }
 
 val shadowImpl: Configuration by configurations.creating {
