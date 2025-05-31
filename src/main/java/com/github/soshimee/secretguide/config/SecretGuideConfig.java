@@ -71,6 +71,11 @@ public class SecretGuideConfig extends Config {
 	)
 	public static int secretAuraSlot = 1;
 
+	@Switch(
+			name = "Route Mode"
+	)
+	public static boolean routeMose = false;
+
 	@Checkbox(
 		name = "Blaze",
 		subcategory = "Rooms"

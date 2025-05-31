@@ -260,7 +260,9 @@ public class SecretAura {
 	}
 
 	public static void sendPacket(BlockPos position, MovingObjectPosition movingObjectPosition, ItemStack itemStack) {
-		PacketUtils.sendPacket((Packet)(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), itemStack, (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord)));
-		PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(itemStack));
+		PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(position, movingObjectPosition.sideHit.getIndex(), itemStack, (float) movingObjectPosition.hitVec.xCoord, (float) movingObjectPosition.hitVec.yCoord, (float) movingObjectPosition.hitVec.zCoord));
+		if (SecretGuideConfig.routeMose) {
+			PacketUtils.sendPacket(new C08PacketPlayerBlockPlacement(itemStack));
+		}
 	}
 }
